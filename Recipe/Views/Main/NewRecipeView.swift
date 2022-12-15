@@ -8,12 +8,20 @@
 import SwiftUI
 
 struct NewRecipeView: View {
+    
+    @State private var showAddRecipe = false
+    
     var body: some View {
         NavigationView {
-            Text("New Recipe")
-                .navigationTitle("New Recipe")
+            Button("Add recipe menually") {
+                showAddRecipe = true
+            }
+            .navigationTitle("New recipe")
         }
         .navigationViewStyle(.stack)
+        .sheet(isPresented: $showAddRecipe){
+            AddRecipeView()
+        }
     }
 }
 
